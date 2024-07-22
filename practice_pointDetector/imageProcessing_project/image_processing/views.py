@@ -16,9 +16,10 @@ from django.http import HttpResponse
 
 
 class ImageViewSet(generics.RetrieveAPIView):
-    queryset = Image.objects.all()
-    serializer = ImageSerializer
+    #queryset = Image.objects.all()
+    serializer_class = ImageSerializer
     permission_classes = (IsAuthenticated, )
+
     def get(self, request, *args, **kwargs):
         images = Image.objects.all()
         serializer = ImageSerializer(images, context={'request': request}, many=True)
@@ -85,5 +86,3 @@ class ImageViewSet(generics.RetrieveAPIView):
 
         return Response({'output_corn': outputdict_corn}, status=status.HTTP_200_OK)
 
-    def create(self, request):
-        pass
