@@ -46,7 +46,7 @@
 
 
 - После запуска сервера проект будет доступен по локальному адресу: http://127.0.0.1:8000
-- Документация для взаимодействия с API в виде Postman-коллекции представленна в файле "POSTMAN_request_API_DRF"
+- Документация для взаимодействия с API в виде Postman-коллекции представленна в файле [POSTMAN_request_API_DRF](https://github.com/TwentyOn/practice-2024/blob/main/practice_pointDetector/imageProcessing_project/POSTMAN_request_API_DRF.postman_collection.json)
 - Для отправки POST-запроса необходима авторизация по адресу: http://127.0.0.1:8000/api/token/
   - логин: admin
   - пароль: admin
