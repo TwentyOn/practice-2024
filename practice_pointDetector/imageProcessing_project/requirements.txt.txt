@@ -1,0 +1,13 @@
+Django
+django-extensions
+djangorestframework
+djangorestframework-simplejwt
+Pillow
+opencv-python
+numpy
+gunicorn
+psycopg2-binary
+sentry-sdk
+python-dotenv
+drf-yasg
+eqator
