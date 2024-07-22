@@ -97,6 +97,41 @@ class ImageSerializerTestCase(TestCase):
         # Проверка соответствия обновленного поля ожидаемому значению
         self.assertEqual(serializer.instance.fingerprint, 'result_image.jpg')
 
+    class ImageModelTestCase(TestCase):
+        def setUp(self):
+            # Подготовка данных для тестов
+            self.image_data = {
+                'image': SimpleUploadedFile(
+                    name='test.jpg',
+                    content=b'\x47\x49\x46\x38\x37\x61\x01\x00\x01\x00\x80\x00\x00\x00\x00\x00\xFF\xFF\xFF\x21\xF9\x04\x01\x0A\x00\x01\x00\x2C\x00\x00\x00\x00\x01\x00\x01\x00\x00\x02\x02\x4C\x01\x00\x3B',
+                    content_type='image/jpeg'
+                )
+            }
+
+        def test_image_creation(self):
+            # Создание объекта Image
+            image = Image.objects.create(image=self.image_data['image'])
+            # Проверка, что объект был создан
+            self.assertTrue(isinstance(image, Image))
+            # Проверка, что поле image не пустое
+            self.assertTrue(image.image)
+
+        def test_image_upload(self):
+            # Создание объекта Image
+            image = Image.objects.create(image=self.image_data['image'])
+            # Проверка, что загруженное изображение сохранено в указанной директории
+            self.assertTrue(image.image.name.startswith('images/'))
+            # Проверка, что загруженное изображение имеет правильное имя файла
+            self.assertEqual(image.image.name.split('/')[-1], 'test.jpg')
+
+        def test_image_file_content(self):
+            # Создание объекта Image
+            image = Image.objects.create(image=self.image_data['image'])
+            # Проверка содержимого загруженного файла
+            with image.image.open('rb') as f:
+                file_content = f.read()
+                self.assertEqual(file_content, self.image_data['image'].read())
+
     class UtilsTests(unittest.TestCase):
         def generate_image_file(self, color=(0, 0, 0)):
             image = Image.new('RGB', (100, 100), color)
