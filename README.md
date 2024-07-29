@@ -7,9 +7,7 @@
 
 После возврата ответа пользователю в директории проекта сохраняются следующие файлы:
 - [results_coordinates](https://github.com/TwentyOn/practice-2024/blob/main/practice_pointDetector/imageProcessing_project/results_coordinates.json) - представляет собой json-файл с найденными координатами объектов
-- result_image - представляет собой изображение с визуализацией углов прямоугольника и его контуров:
-
-![result_image](https://github.com/user-attachments/assets/8db73f12-4cc8-429b-a7a4-1a878b4e8248)
+- [result_image](https://github.com/TwentyOn/practice-2024/blob/main/practice_pointDetector/imageProcessing_project/result_image.jpg?raw=true) - представляет собой изображение с визуализацией углов прямоугольника и его контуров:
 
 # Необходимые компоненты
 - Python 3.10^
